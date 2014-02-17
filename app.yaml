@@ -1,0 +1,43 @@
+application: sotonopoly
+version: 0-3
+runtime: python27
+api_version: 1
+threadsafe: true
+
+inbound_services:
+- channel_presence
+
+builtins:
+- datastore_admin: on
+
+handlers:
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+  
+- url: /sotonopoly.css
+  static_files: sotonopoly.css
+  upload: sotonopoly.css
+
+- url: /
+  static_files: lobby.html
+  upload: lobby.html
+  
+- url: /play
+  script: RequestHandler.app
+
+- url: /game/.*
+  script: RequestHandler.app
+  
+- url: /_ah/channel/.*
+  script: RequestHandler.app
+
+- url: /images
+  static_dir: images
+
+- url: /js
+  static_dir: js
+
+- url: /api
+  static_dir: api
+  login: required

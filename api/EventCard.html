@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Sotonopoly API - EventCard</title>
+	</head>
+	
+	<body>
+		<h1>EventCard</h1>
+		<a href='index.html'>Back to menu</a>
+		<p>Models the "Chance" and "Community Chest" cards. Each instance of this class represents a card from either deck. This class has no methods available; all data processing occurs in the <i>GameUpdater</i></p>
+		<p>Datastore model entity. Inherits from <i>Game</i> entity.</p>
+		<h2>Variables</h2>
+			<h3>text (String)</h3>
+				<p>The text shown on the card (e.g. "Proceed to Zepler").</p>
+				<p>Default value: "card"</p>
+				<p>Required? Yes.</p>
+			<h3>event (integer)</h3>
+				<p>An integer encoding what the value means:</p>
+				<ul>
+					<li>0: Income - value is an int, player recieves (or loses, if value is negative) that much money</li>
+					<li>1: Move - value is an int, player moves forwards (or backwards, if value is negative) that many spaces</li>
+					<li>2: MoveTo - value is an int in range 0-39 (inclusive), player moves to that location on the board</li>
+					<li>3: PayAll - value is an int, player pays (or receives, if value is negative) that much money to/from each player</li>
+					<li>4: Jail - value is int, 1 = GoToJail, 0 = GetOutOfJail</li>
+					<li>5: Utilty - value is not important (= 0), just move to the nearest Utility</li>
+					<li>6: Station - value is not important (= 0), just move to the nearest Station</li>
+					<li>7: Pay Per Property - value is int to pay per house/office owned, value2 is int to pay per hotel/lab owneed</li>
+				</ul>
+				<p>Default value: 0</p>
+				<p>Required? Yes.</p>
+			<h3>value (integer)</h3>
+				<p>An integer value storing a quantity relevant depending on <i>event</i>.</p>
+				<p>Default value: 0</p>
+				<p>Required? Yes.</p>
+			<h3>value2 (integer)</h3>
+				<p>An integer value storing the cost for labs for Pay Per Property cards. This value is not required and redundant for all other event cards.</p>
+				<p>Default value: 0</p>
+				<p>Required? No.</p>
+			<h3>drawn (boolean)</h3>
+				<p>True - this card has been drawn.</p>
+				<p>False - this card has not yet been drawn</p>
+				<p>Default value: False</p>
+				<p>Required? Yes.</p>
+			<h3>isChance (boolean)</h3>
+				<p>True - this is a Chance card.</p>
+				<p>False - this is a Community Chest card.</p>
+				<p>Default value: False.</p>
+				<p>Required? Yes.</p>
+	</body>
+</html>

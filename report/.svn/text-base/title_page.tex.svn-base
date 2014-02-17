@@ -1,0 +1,21 @@
+\begin{titlepage}
+\vspace*{\fill} % Vertical Align
+\begin{center}
+
+{\LARGE Scripting Team C} \\ [1.5cm]
+
+% Title
+\textbf{\Huge Sotonopoly} \\ [1.5cm]
+
+% Author and date
+{\normalsize Chris Bulmer - cb11g09@ecs.soton.ac.uk} \\ [0.3cm]
+{\normalsize Alex Lo - acsl1g09@ecs.soton.ac.uk} \\ [0.3cm]
+{\normalsize Tom Blount - tb12g09@ecs.soton.ac.uk} \\ [0.3cm]
+{\normalsize Andy Cook - ac22g08@ecs.soton.ac.uk} \\ [0.3cm]
+{\normalsize Nicholas Angeli - na8g09@ecs.soton.ac.uk} \\ [0.3cm]
+{\normalsize Rodrigo Escobar - raeb1g08@ecs.soton.ac.uk} \\ [1.5cm]
+{\LARGE \today} \\ [1.5cm]
+
+\end{center}
+\vspace*{\fill}
+\end{titlepage}

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sotonopoly</title>
+    <script type="text/javascript" src="/_ah/channel/jsapi"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="//ajax.microsoft.com/ajax/jquery.ui/1.8.16/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/sotonopoly.js"></script>
+	<script type="text/javascript" src="/js/jquery-dialog.js"></script>
+	<link rel="stylesheet" type="text/css" href="//ajax.microsoft.com/ajax/jquery.ui/1.8.16/themes/smoothness/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="/sotonopoly.css" />
+    <script type="text/javascript">
+    //<![CDATA[
+    
+    $(function()
+    {
+		var user_id = $("#user_id").val();
+		var game_key_element = $("#game_key");
+		var game_key = game_key_element.length > 0 ? game_key_element.val() : null;
+		
+       		 var sotonopoly = new Sotonopoly (document.getElementById ('canvas'), user_id, game_key);
+		
+		$("#join_url").click (function()
+		{
+			this.focus();
+			this.select();
+		});
+		
+		// hide the dice until the game starts
+		$(".dice1").hide();
+		$(".dice2").hide();
+		// hide chat console
+		//$("#chat").hide();
+		
+		// when enter is hit when on chat text field, submit
+		$("#chat_text").get(0).onkeyup = function(e) {
+			e = e || event;
+			// keycode 13 is enter button
+			if(e.keyCode === 13) {
+				$("#send_button").click();			
+			}		
+		}
+
+    });
+    //]]>
+    </script>
+</head>
+<body>
+<div id="wrapper">
+	<div id="main-section">
+		<div id = "card">
+			<a href = "#" id = "card_close">Close (X)</a><p id = "card_header">Card Header</p><p id = "card_text"></p>
+		</div>
+		<div id="board">
+			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="800" height="800" id="canvas">
+				
+			</svg>
+		</div>
+	</div>
+	<div id="left-bar">
+		<div class="box">
+			<strong>Invite a friend to play:</strong><br />
+			<textarea id="join_url" rows="3" cols="25" style="width:100%" readonly="readonly"></textarea>
+		</div>
+		<div class="box">
+			<strong>Options</strong>
+			<ul id="game-options">
+				<li id="waiting-players">Waiting for players...</li>
+				<li id="waiting-gamestart">Waiting for game to start...</li>
+				<li id="waiting-turn">Waiting for your turn...</li>
+				<li id="roll"><a href="#">Roll Dice</a></il>
+				<li id="end-turn"><a href="#">End Turn</a></li>
+				<li id="buy-property"><a href="#">Buy Property</a></li>
+				<li id="buy-houses"><a href="#">Improve Site</a></li>
+				<li id="pay-50-fine"><a href="#">Pay £50 fine</a></li>
+				<li id="use-jail-card"><a href="#">Use Get Out Of Jail Free Card</a></li>
+				<li id="start-game"><a href="#">Start game</a></li>
+				<li id="finished-improving"><a href="#">Finished Improving Sites</a></li>
+				<li id="mortgage-property"><a href="#">Mortgage Property</a></li>
+				<li id="unmortgage-property"><a href="#">Unmortgage Property</a></li>
+			</ul>
+		</div>
+		<div class = "dice">
+			<div class = "dice1">
+				<img class = "red_die_face" id = "red_die_face_1" src = "images/red_face_1.png" />
+				<img class = "red_die_face" id = "red_die_face_2" src = "images/red_face_2.png" />
+				<img class = "red_die_face" id = "red_die_face_3" src = "images/red_face_3.png" />
+				<img class = "red_die_face" id = "red_die_face_4" src = "images/red_face_4.png" />
+				<img class = "red_die_face" id = "red_die_face_5" src = "images/red_face_5.png" />
+				<img class = "red_die_face" id = "red_die_face_6" src = "images/red_face_6.png" />
+			</div>
+			<div class = "dice2">
+				<img class = "blue_die_face" id = "blue_die_face_1" src = "images/blue_face_1.png" />
+				<img class = "blue_die_face" id = "blue_die_face_2" src = "images/blue_face_2.png" />
+				<img class = "blue_die_face" id = "blue_die_face_3" src = "images/blue_face_3.png" />
+				<img class = "blue_die_face" id = "blue_die_face_4" src = "images/blue_face_4.png" />
+				<img class = "blue_die_face" id = "blue_die_face_5" src = "images/blue_face_5.png" />
+				<img class = "blue_die_face" id = "blue_die_face_6" src = "images/blue_face_6.png" />
+			</div>
+		</div>
+	</div>
+	<div id="right-bar">
+		<div class="box">
+			<strong>Game Console</strong>
+			<div id="log"></div>
+		</div>
+		<div class="box">
+			<strong>Players</strong><br />
+			<div id="player_one">
+				<img src="../images/mortarboard.png" alt="" />
+				<span class="content"></span>
+				&pound;<span class="amount">1500</span>
+			</div>
+			<div id="player_two">
+				<img src="../images/dolphin.png" alt="" />
+				<span class="content"></span>
+				&pound;<span class="amount">1500</span>
+			</div>
+			<div id="player_three">
+				<img src="../images/book.png" alt="" />
+				<span class="content"></span>
+				&pound;<span class="amount">1500</span>
+			</div>
+			<div id="player_four">
+				<img src="../images/glass.png" alt="" />
+				<span class="content"></span>
+				&pound;<span class="amount">1500</span>
+			</div>
+		</div>
+		<div class="box">
+			<strong>Chat</strong>
+			<div id="chat">
+				<div id="chat_box"></div>
+				<input type="text" id="chat_text" placeholder="Chat here" />
+				<button id="send_button" type="button">Send</button> 
+			</div>
+		</div>
+	</div>
+	<!-- The rest is for cards and stuff -->
+	<div id="improve-site">
+		<h2 class="title">Murray Building</h2>
+		<p class="body">
+			<input type="button" id="remove-house" value="&#8722;" />
+			<span id="text-wrapper"><span id="num-houses">0</span> <span id="building-type">offices</span></span>
+			<input type="button" id="add-house" value="+" />
+		</p>
+		<p><a href="#" id="finished-improving">Finished Updating</a></p>
+	</div>	
+	<div id="mortgage-site">
+		<h2 class="title">Mortgage Confirm</h2>
+		<p class="body">
+			Are you sure you want to mortgage this building? 
+			<a href="#" id="mortgage_confirm">Confirm</a><a href="#" id="mortgage_cancel"> Cancel</a>
+		</p>
+	</div>
+	<div id="unmortgage-site">
+		<h2 class="title">Unmortgage Confirm</h2>
+		<p class="body">
+			Are you sure you want to unmortgage this building? 
+			<a href="#" id="unmortgage_confirm">Confirm</a><a href="#" id="unmortgage_cancel"> Cancel</a>
+		</p>
+	</div>
+	<div id="property" class="location">
+		<div class="border">
+			<p class="title">Property Name</p>
+			<p class="title-deed">
+				<p style="text-align:center">TITLE DEED</p>
+				<p class="extra-padding">
+					<span class="right"><strong>£</strong></span><br />
+					<span class="left">RENT &mdash; Site only</span> <span class="rent-site-only right">2</span><br />
+					<span class="left">RENT with 1 office</span> <span class="rent-one-house right">10</span><br />
+					<span class="left">RENT with 2 offices</span> <span class="rent-two-houses right">30</span><br />
+					<span class="left">RENT with 3 offices</span> <span class="rent-three-houses right">90</span><br />
+					<span class="left">RENT with 4 offices</span> <span class="rent-four-houses right">160</span><br />
+					<span class="left">RENT WITH RESEARCH LAB</span> <span class="rent-hotel right">250</span>
+				</p>
+			</p>
+			<br class="clear" />
+		</div>
+		<p class="clear" style="text-align:center; padding:5px;"><small>If a player owns <strong>all</strong> the sites of any colour group, the rent is <strong>doubled</strong> on <strong>unimproved</strong> sites in that group.</small></p>
+		<div class="border">
+			<div class="extra-padding">
+				<p>
+					<span class="left">Cost of office</span> <span class="right">£50 each</span><br />
+					<span class="left">Cost of research lab</span> <span class="right small-width">£50 plus 4 offices</span>
+				</p>
+				
+				<div id="ownership">
+					<p>Property owned by:</p>
+					<p><span class="owner">Owner name</span> <span class="houses"></span></p>
+				</div>
+				<br class="clear" />
+			</div>
+		</div>
+	</div>
+	<div id="pub" class="location">
+		<div class="border">
+			<p class="title">Pub Name</p>
+			<p style="text-align:center"><strong>SOUTHAMPTON UNI PUBS</strong></p>
+			<p class="extra-padding">
+				<span class="left">RENT</span> <span class="right">£25</span><br /><br />
+				<span class="left">If 2 pubs are owned</span> <span class="right">£50</span><br /><br />
+				<span class="left">If 3 pubs are owned</span> <span class="right">£100</span><br /><br />
+				<span class="left">If 4 pubs are owned</span> <span class="right">£200</span>
+			</p>
+			<br class="clear" />
+			<hr />
+			<div class="extra-padding" style="text-align:center">
+				MORTGAGE VALUE - £100
+				<br class="clear" />
+			</div>
+		</div>
+	</div>
+	<div id="shop" class="location">
+		<div class="border">
+			<p class="title">Shop Name</p>
+			<p style="text-align:center; margin: 10px 0"><img src="" alt="" id="shop-image" /></p>
+			<p class="extra-padding">
+				<p class="explanation">If one &ldquo;Shop&rdquo; is owned, rent is 4 times amount shown on dice.</p>
+				<p class="explanation">If both &ldquo;Shops&rdquo; are owned, rent is 10 times amount shown on dice.</p>
+			</p>
+			<br class="clear" />
+			<hr />
+			<div class="extra-padding" style="text-align:center">
+				MORTGAGE VALUE - £75
+				<br class="clear" />
+			</div>
+		</div>
+	</div>
+</div>

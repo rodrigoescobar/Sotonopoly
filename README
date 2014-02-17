@@ -1,0 +1,1 @@
+Do not move app.yaml or the RequestHandler.py to the python folder. It is the equivalent of an index file. It handles all incoming URI requests. Moving it breaks everything!

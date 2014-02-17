@@ -1,0 +1,276 @@
+/* Picked up some ideas for the column stuff from http://www.alistapart.com/articles/holygrail */
+* { margin: 0; padding: 0; }
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	padding: 0 460px 0 220px; /* 0 (RightCol width + MainSection padding + right box padding) 0 (LeftCol width + LeftBox padding) */
+	min-width: 800px; /* board width + padding */
+	background: url('images/background.png');
+}
+h1 { text-align: center; margin: 0 -460px 0 -220px; }
+textarea { font-family: inherit }
+
+#board { margin: 0 auto; width: 800px; height: 800px; background:url('images/board.png'); }
+
+.location {
+	background-color: #fff;
+	border:1px solid #ddd;
+	display: none;
+	width: 220px;
+	padding: 10px;
+	box-shadow: 5px 5px 5px #888;
+	opacity: 0.95;
+	position: absolute;
+	font-size: 0.875em;
+}
+
+.location .border {
+	border: 1px solid #000;
+	padding: 3px;
+}
+
+.location .title {
+	padding: 6px;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#property .title {
+	background-color: #f00;
+	color: #fff;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+	text-align: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.small-width {
+	width: 60px;
+}
+
+.extra-padding {
+	padding: 6px;
+}
+
+.location #ownership {
+	margin-top: 10px;    	
+}
+
+#pub .title, #shop .title {
+	border: 1px solid #000;
+	font-size: 1.3em;
+}
+
+#shop p.explanation {
+	margin: 12px 0;
+}
+
+#log {
+	width: 100%;
+	height: 200px;
+}
+
+#wrapper {
+	width: 100%;
+}
+
+#game-options li {
+	list-style-type: none;
+}
+
+#left-bar {
+	/*background-color: yellow;*/
+	float: left;
+	width: 200px;
+	margin-left: -100%;
+	right: 260px;
+	position: relative;
+}
+
+#right-bar {
+	float: left;
+	width: 400px;
+	/*background-color: green;*/
+	margin-right: -100%;
+}
+
+.box {
+	background-color: #bbb;
+	width: 100%;
+	margin: 20px 0;
+	padding: 10px;
+	display: none;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#main-section {
+	/*padding: 20px;*/
+	float: left;
+	width: 100%;
+	padding: 20px 20px 0;
+	/*background-color: red;*/
+}
+
+#player-list li {
+	list-style-type: none;
+}
+
+.ui-dialog { font-size: 12px; }
+
+#log {
+	overflow: auto;
+	background-color: #fff;
+	margin-right: 10px;
+	font-size: 10px;
+}
+
+#player_one, #player_two, #player_three, #player_four {
+
+	opacity: 0.8;
+	line-height: 2em;
+}
+
+#player_one img, #player_two img, #player_three img, #player_four img {
+	line-height: 2em;
+	padding-top: 5px;
+}
+
+#player_one {
+	background-color: red;
+}
+
+#player_two {
+	background-color: green;
+}
+
+#player_three {
+	background-color: blue;
+
+}
+
+#player_four {
+	background-color: yellow;
+
+}
+
+.dice1 {
+	margin-left:15px;	
+}
+
+.dice2 {
+	position: relative;
+	left: 115px;
+}
+
+.red_die_face {
+	/*visibility: hidden;*/
+	position: absolute;
+	height: 96px;
+	width: 100px;
+}
+
+.blue_die_face {
+	/*visibility: hidden;*/
+	position: absolute;
+	height: 96px;
+	width: 100px;
+}
+
+#card {
+	background-color: #ffffff;
+	width: 400px;
+	height: 200px;
+	display: none;
+	position: fixed;
+	top: 100px;
+	left: 100px;
+	border: 1px solid #999;
+	box-shadow: 0px 0px 20px #888;
+	padding: 20px;
+}
+
+#card_header {
+	position: absolute;
+	top: 5px;
+	display: none;
+}
+
+#card_text {
+	padding-top: 50px;
+	text-align: center;
+	display: none;
+}
+
+#card_close {
+	position: absolute;
+	top: 5px;
+	left: 330px;
+	display: none;
+}
+
+#improve-site input[type=button] {
+	width: 40px;
+	height: 40px;
+	font-weight: bold;
+}
+
+#improve-site span#num-houses { font-weight: bold; }
+#improve-site span#text-wrapper { display: width: 100px; }
+
+#improve-site, #mortgage-site, #unmortgage-site {
+	float: left;
+	background-color: #fff;
+	border: 1px solid #999;
+	width: 300px;
+	padding: 10px;
+	text-align: center;
+	box-shadow: 0px 0px 20px #888;
+	display: none;
+}
+
+#improve-site h2 {
+	background-color: #f00;
+	padding: 3px;
+	color: #fff;
+	font-size: 25px;
+}
+
+#improve-site .body {
+	margin: 30px auto;
+	width: 100%;
+	font-size: 25px;
+}
+
+#chat_box {
+	overflow: auto;
+	height: 180px;
+	width: 100%;
+	background-color: #ffffff;
+	font-size: 10px;
+}
+#chat_text {
+`	overflow: auto;
+	margin: 5px 0 0 0;
+	max-width: 100%;
+	width: 100%;
+}
+
+#you_win {
+	width : 320px;
+	height: 200px;
+}
+
+#you_lose {
+	width : 320px;
+	height: 200px;
+}

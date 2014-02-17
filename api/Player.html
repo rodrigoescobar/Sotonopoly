@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Sotonopoly API - Player</title>
+	</head>
+	
+	<body>
+		<h1>Player</h1>
+		<a href='index.html'>Back to menu</a>
+			<p>This class models a Player in a game. This class has no methods available; all data processing occurs in the <i>GameUpdater</i>.</p>
+			<p>Datastore model entity. Inherits from <i>Game</i> entity.</p>
+		<h2>Variables</h2>
+			<h3>user (<a href = "http://code.google.com/appengine/docs/python/datastore/typesandpropertyclasses.html#UserProperty">Google UserProperty</a>)</h3>
+				<p>Stores a handle to the user object in the Google App Engine.</p>
+				<p>Required? Yes.</p>
+			<h3>name (String)</h3>
+				<p>The user-defined player name for each player that as they join the game.</p>
+				<p>Required? Yes.</p>
+			<h3>turnNumber (integer)</h3>
+				<p>Each player in any game has a unique turn number. The system can use consecutive turnNumbers to identify which player's turn is next.</p>
+				<p>Required? Yes.</p>
+			<h3>money (integer)</h3>
+				<p>The amount of money a player has.</p>
+				<p>Default value: 1500</p>
+				<p>Required? Yes.</p>
+			<h3>position (integer)</h3>
+				<p>Range 0-39. The player's position on the board.</p>
+				<p>Default value: 0</p>
+				<p>Required? Yes.</p>
+			<h3>inJail (integer)</h3>
+				<p>Integer in range -1..3 showing a player's jail status.</p>
+				<ul>
+					<li>-1 = not in jail;</li>
+					<li>0 = in jail for their last turn;</li>
+					<li>1 = in jail for 1 more turn;</li>
+					<li>2 = in jail for 2 more turns;</li>
+					<li>3 = in jail for 3 more turns.</li>
+				</ul>
+				<p>Default value: -1</p>
+				<p>Required? Yes.</p>
+			<h3>getOutOfJailFree (integer)</h3>
+				<p>Stores how many "Get out of jail free" cards the player has.</p>
+				<p>Default value: 0</p>
+				<p>Required? Yes.</p>
+			<h3>piece (String)</h3>
+				<p>Stores which playing piece the player is represented by (mortarboard, laptop, book or dolphin)</p>
+				<p>Required? Yes.</p>
+			<h3>colour (String)</h3>
+				<p>Hex value, storing the colour representing the player, used to highlight their playing piece and show which properties they own</p>
+				<p>Required? Yes.</p>
+			<h3>bankrupt (boolean)</h3>
+				<p>True - the player is bankrupt.</p>
+				<p>False - the player is not bankrupt.</p>
+				<p>Default value: False</p>
+				<p>Required? Yes</p>
+			<h3>clientID (String)</h3>
+				<p>The client ID required for /*TODO*/</p>
+				<p>Required? Yes.</p>
+	</body>
+</html>

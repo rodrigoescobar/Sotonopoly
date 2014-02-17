@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>Sotonopoly API - RequestHandler</title>
+	</head>
+	
+	<body>
+		<h1>Request Handler</h1>
+		<a href='index.html'>Back to menu</a>
+		<p>This file contains various class definitions and code to bind the URL requests to initialise these classes. The classes in turn call appropriate functions on a <i>GameUpdater</i> object to reflect changes made by the client(s) on the server. They also returns JSON messages to the client(s) if necessary.</p>
+		<h3>HomeHandler (class)</h3>
+		<p>Returns game.html to the user. The html page contains a form with one hidden field containing the user id. This is the user id to be used in the game (corresponds to a Google account id). If the user is not logged in, it redirects them to the google login page which redirects back to the game</p>
+		<p><b>Access URL:</b> /</p>
+			
+		<h3>GameSetupHandler (class)</h3>
+		<p>Only accepts POST. Sets up the game. If a game_key is provided then it will join the player with that game (if possible). If there is not a game_key specified, it will create a game and return the game key to the player. It also returns a token (secret) which the client uses to set up a channel</p>
+		<p><b>Access URL:</b> /game/setup</p>
+		<p><b>Parameters:</b> game_key (optional)</p>
+			
+		<h3>GameRollHandler (class)</h3>
+		<p>Only accepts POST. Checks for user login, if success call <i>GameUpdater.rollTheDice()</i>.</p>
+		<p><b>Access URL:</b> /game/roll</p>
+		<p><b>Parameters:</b> game_key</p>
+			
+		<h3>GameLeaveJailHandler (class)</h3>
+		<p>Only accepts POST. Checks for user login, if success call <i>GameUpdater.leaveJail()</i>. <i>method</i> indicates with which means the user is leaving jail: </p>
+			<ul>
+				<li>'card' - the player is using a Get out of Jail Free card;</li>
+				<li>'paid' - the player is paying to get out of Jail</li>
+			</ul>
+		<p><b>Access URL:</b> /game/leave_jail</p>
+		<p><b>Parameters:</b> game_key, method</p>
+			
+		<h3>GameEditPropertyHandler (class)</h3>
+		<p>Only accepts POST. Calls a method on condition of <i>action</i> argument on <i>property</i> specified:</p>
+		<ul>
+			<li>action = 'buy': calls <i>GameUpdater.buyHouse()</i>;</li>
+			<li>action = 'sell': not yet implemented</li>
+		</ul>
+		<p><b>Access URL:</b> /game/edit_property</p>
+		<p><b>Parameters:</b> game_key, action, property</p>
+
+		<h3>GameStartHandler (class)</h3>
+		<p>Only accepts POST. Call to <i>GameUpdater.startGame()</i>.</p>
+		<p><b>Access URL:</b> /game/start</p>
+		<p><b>Parameters:</b> game_key</p>
+		
+		<h3>GameAddPlayerHandler (class)</h3>
+		<p>Only accepts POST. Checks for user login, if success call <i>GameUpdater.addPlayer()</i>. This will attempt to create a new player with the name specified for the game specified.</p>
+		<p><b>Access URL:</b> /game/add_player</p>
+		<p><b>Parameters:</b> game_key, name</p>
+		
+		<h3>GameEndTurnHandler (class)</h3>
+		<p>Only accepts POST. Checks for user login, if success call <i>GameUpdater.endPlayerTurn()</i>.</p>
+		<p><b>Access URL:</b> /game/end_turn</p>
+		<p><b>Parameters:</b> game_key</p>
+		
+		<h3>GameBuyPropertyHandler (class)</h3>
+		<p>Only accepts POST. Calls <i>GameUpdater.buyProperty()</i>. This buys the property where the player is currently located if possible.</p>
+		<p><b>Access URL:</b> /game/buy_property</p>
+		<p><b>Parameters:</b> game_key</p>
+			
+		<h3>ChannelConnectHandler (class)</h3>
+		<p>Only accepts POST. Creates a new <i>Channel</i> and initiates it with <i>from</i> argument</p>
+		<p><b>Access URL:</b> /_ah/channel/connected/</p>
+		<p><b>Parameters:</b> from</p>
+		
+		<h3>ChannelDisconnectHandler (class)</h3>
+		<p></p>
+		
+	</body>
+</html>
